@@ -1,8 +1,18 @@
-export default function Card() {
-  return (
-    <div class="bg-white p-4 text-center rounded-md shadow-ms">
-      <h2>Card Component</h2>
-      <button class="btn">Click me</button>
-    </div>
-  );
-}
+import type { ParentComponent } from "solid-js";
+
+type Props = {
+  rounded: boolean;
+  flat: boolean;
+};
+
+export const Card: ParentComponent<Props> = (props) => (
+  <div
+    class="bg-white p-4 text-center"
+    classList={{
+      "rounded-md": props.rounded,
+      "shadow-md": !props.flat,
+    }}
+  >
+    {props.children}
+  </div>
+);
